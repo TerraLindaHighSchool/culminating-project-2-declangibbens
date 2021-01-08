@@ -18,7 +18,6 @@ public class Obstacle : MonoBehaviour
         if (currentPos < -30)
         {
             Destroy(gameObject);
-            Debug.Log("HI");
         }
     }
 }

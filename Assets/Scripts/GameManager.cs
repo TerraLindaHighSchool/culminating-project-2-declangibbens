@@ -5,16 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
-    private float spawnRate = 1.0f;
+    private float spawnRate = 2.0f;
     public bool isGameActive = true;
-    private float xMin = -68.5f;
-    private float xMax = -45.0f;
-    private float ySpawnPos = -21.25f;
+    private float xMin = -8.0f;
+    private float xMax = 8.5f;
+    private float ySpawnPos = 0.0f;
     private float vehiclePos;
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(SpawnTarget());
+        StartCoroutine(SpawnTarget());
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
             int index = Random.Range(0, targets.Count);
             Instantiate(targets[index], RandomSpawnPos(), transform.rotation);
+            spawnRate = spawnRate - 0.01f;
         }
     }
     Vector3 RandomSpawnPos()
